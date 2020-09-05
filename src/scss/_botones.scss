@@ -1,0 +1,153 @@
+/** 
+    ESTILO BOTONES:
+    @mixin btn zone genera la base del botón en función de los parámetros recibidos
+    Se definen estilos para cada posible estado del botón
+
+    @param $colorTemp: Color de la temperatura ambiente
+    @param $colorDesc: Color del texto que da nombre a la sala (descripción)
+    @param $colorState: Color del texto que indica estado actual de la sala (bajo el nombre de la misma)
+    @param $colorSwitch: Color de la imagen vectorial SVG del interruptor
+*/
+
+@mixin btn-zone ($colorTemp,$colorDesc,$colorState,$colorSwitch){
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    padding: 17px 13px;
+    height: 130px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.22),
+                0 5px 10px 0 rgba(0, 0, 0, 0.34);
+    font-size: 33px;
+    color: $colorTemp;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s, background 0.2s;
+    
+
+    .bg-icon{
+        position: absolute;
+        z-index: 0;
+        bottom: -20px;
+        right: -40px;
+        width: 100px;
+        fill: #7B8794 !important;
+    }
+
+    .zone-temp{
+        position: relative;
+        z-index: 10;
+    }
+
+
+    svg {
+
+        height: 24px;
+        display: block;
+        position: absolute;
+        top: calc(50% - 12px);
+        left: calc(50% - 12px);
+        
+    }
+
+    .zone-switch{
+        position: absolute;
+        cursor: pointer;
+        width: 55px;
+        height: 55px;
+        top:0;
+        right: 0;
+        z-index: 100;
+
+        .power-icon{         
+            fill: $colorSwitch;
+        }
+
+    }
+
+    .zone-info{
+        position: absolute;
+        width: 90%;
+        bottom: 17px;
+        z-index: 10;
+    }
+
+    .zone-desc{
+        display: block;
+        font-size: 16px;
+        color: $colorDesc;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .zone-state{
+        display: block;
+        font-size: 13px;
+        color: $colorState;
+    }
+
+    
+   
+}
+
+
+.btn-zone-off{
+    @include btn-zone(#7B8794, #1F2933 , #9AA5B1,#CBD2D9);
+    background-color: $backgroundOff;
+}
+
+.btn-zone-heating{
+    @include btn-zone(#FFF, #FFF , #FFC3BD, #FFC8BD);
+    background: $backgroundHeating;
+    /* Para garantizar compatibilidad con navegadores, concatenamos la variable con cada premisa */
+    background: -webkit-#{$backgroundHeating};
+    background: -moz-#{$backgroundHeating};
+    background: -o-#{$backgroundHeating};
+    background: -ms-#{$backgroundHeating};
+
+    /* El botón debe cambiar la sombra si no está apagado */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.22),
+                0 1px 2px 0 rgba(0, 0, 0, 0.34);
+}
+
+.btn-zone-cooling{
+    @include btn-zone(#FFF, #FFF , #B3ECFF, #B3ECFF);
+    background: $backgroundCooling;
+    background: -webkit-#{$backgroundCooling};
+    background: -moz-#{$backgroundCooling};
+    background: -o-#{$backgroundCooling};
+    background: -ms-#{$backgroundCooling};
+
+    /* El botón debe cambiar la sombra si no está apagado */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.22),
+                0 1px 2px 0 rgba(0, 0, 0, 0.34);
+}
+
+.btn-zone-success{
+    @include btn-zone(#FFF, #FFF , #C6F7E5, #C6F7E5);
+    background: $backgroundSuccess;
+    background: -webkit-#{$backgroundSuccess};
+    background: -moz-#{$backgroundSuccess};
+    background: -o-#{$backgroundSuccess};
+    background: -ms-#{$backgroundSuccess};
+
+    /* El botón debe cambiar la sombra si no está apagado */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.22),
+                0 1px 2px 0 rgba(0, 0, 0, 0.34);
+}
+
+
+
+/* ROTACIÓN DE LA IMAGEN */
+
+@keyframes giroinfinito {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.bg-icon{
+    /*fill: red;*/
+    animation: giroinfinito 22s linear infinite;
+    
+}

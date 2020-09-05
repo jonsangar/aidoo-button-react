@@ -1,0 +1,356 @@
+@charset "UTF-8";
+/*
+    DEFINIMOS LAS VARIABLES
+    Conseguimos simplificar código scss de los botones y optimizar el mantenimiento
+*/
+/* COLOR DEL LUGAR 'Place'*/
+/* COLOR DE FONDO DE BOTÓN DE ZONA: SEGÚN ESTADO */
+/** 
+    ESTILO BOTONES:
+    @mixin btn zone genera la base del botón en función de los parámetros recibidos
+    Se definen estilos para cada posible estado del botón
+
+    @param $colorTemp: Color de la temperatura ambiente
+    @param $colorDesc: Color del texto que da nombre a la sala (descripción)
+    @param $colorState: Color del texto que indica estado actual de la sala (bajo el nombre de la misma)
+    @param $colorSwitch: Color de la imagen vectorial SVG del interruptor
+*/
+.btn-zone-off {
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  padding: 17px 13px;
+  height: 130px;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.22), 0 5px 10px 0 rgba(0, 0, 0, 0.34);
+  font-size: 33px;
+  color: #7B8794;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s, background 0.2s;
+  background-color: #fff;
+}
+.btn-zone-off .bg-icon {
+  position: absolute;
+  z-index: 0;
+  bottom: -20px;
+  right: -40px;
+  width: 100px;
+  fill: #7B8794 !important;
+}
+.btn-zone-off .zone-temp {
+  position: relative;
+  z-index: 10;
+}
+.btn-zone-off svg {
+  height: 24px;
+  display: block;
+  position: absolute;
+  top: calc(50% - 12px);
+  left: calc(50% - 12px);
+}
+.btn-zone-off .zone-switch {
+  position: absolute;
+  cursor: pointer;
+  width: 55px;
+  height: 55px;
+  top: 0;
+  right: 0;
+  z-index: 100;
+}
+.btn-zone-off .zone-switch .power-icon {
+  fill: #CBD2D9;
+}
+.btn-zone-off .zone-info {
+  position: absolute;
+  width: 90%;
+  bottom: 17px;
+  z-index: 10;
+}
+.btn-zone-off .zone-desc {
+  display: block;
+  font-size: 16px;
+  color: #1F2933;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.btn-zone-off .zone-state {
+  display: block;
+  font-size: 13px;
+  color: #9AA5B1;
+}
+
+.btn-zone-heating {
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  padding: 17px 13px;
+  height: 130px;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.22), 0 5px 10px 0 rgba(0, 0, 0, 0.34);
+  font-size: 33px;
+  color: #FFF;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s, background 0.2s;
+  background: radial-gradient(circle farthest-corner at 0% 100%, #EF694E 0%, #CF1E11 100%);
+  /* Para garantizar compatibilidad con navegadores, concatenamos la variable con cada premisa */
+  background: -webkit-radial-gradient(circle farthest-corner at 0% 100%, #EF694E 0%, #CF1E11 100%);
+  background: -moz-radial-gradient(circle farthest-corner at 0% 100%, #EF694E 0%, #CF1E11 100%);
+  background: -o-radial-gradient(circle farthest-corner at 0% 100%, #EF694E 0%, #CF1E11 100%);
+  background: -ms-radial-gradient(circle farthest-corner at 0% 100%, #EF694E 0%, #CF1E11 100%);
+  /* El botón debe cambiar la sombra si no está apagado */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.22), 0 1px 2px 0 rgba(0, 0, 0, 0.34);
+}
+.btn-zone-heating .bg-icon {
+  position: absolute;
+  z-index: 0;
+  bottom: -20px;
+  right: -40px;
+  width: 100px;
+  fill: #7B8794 !important;
+}
+.btn-zone-heating .zone-temp {
+  position: relative;
+  z-index: 10;
+}
+.btn-zone-heating svg {
+  height: 24px;
+  display: block;
+  position: absolute;
+  top: calc(50% - 12px);
+  left: calc(50% - 12px);
+}
+.btn-zone-heating .zone-switch {
+  position: absolute;
+  cursor: pointer;
+  width: 55px;
+  height: 55px;
+  top: 0;
+  right: 0;
+  z-index: 100;
+}
+.btn-zone-heating .zone-switch .power-icon {
+  fill: #FFC8BD;
+}
+.btn-zone-heating .zone-info {
+  position: absolute;
+  width: 90%;
+  bottom: 17px;
+  z-index: 10;
+}
+.btn-zone-heating .zone-desc {
+  display: block;
+  font-size: 16px;
+  color: #FFF;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.btn-zone-heating .zone-state {
+  display: block;
+  font-size: 13px;
+  color: #FFC3BD;
+}
+
+.btn-zone-cooling {
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  padding: 17px 13px;
+  height: 130px;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.22), 0 5px 10px 0 rgba(0, 0, 0, 0.34);
+  font-size: 33px;
+  color: #FFF;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s, background 0.2s;
+  background: radial-gradient(circle farthest-corner at 0% 100%, #40C3F7 0%, #0B69A3 100%);
+  background: -webkit-radial-gradient(circle farthest-corner at 0% 100%, #40C3F7 0%, #0B69A3 100%);
+  background: -moz-radial-gradient(circle farthest-corner at 0% 100%, #40C3F7 0%, #0B69A3 100%);
+  background: -o-radial-gradient(circle farthest-corner at 0% 100%, #40C3F7 0%, #0B69A3 100%);
+  background: -ms-radial-gradient(circle farthest-corner at 0% 100%, #40C3F7 0%, #0B69A3 100%);
+  /* El botón debe cambiar la sombra si no está apagado */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.22), 0 1px 2px 0 rgba(0, 0, 0, 0.34);
+}
+.btn-zone-cooling .bg-icon {
+  position: absolute;
+  z-index: 0;
+  bottom: -20px;
+  right: -40px;
+  width: 100px;
+  fill: #7B8794 !important;
+}
+.btn-zone-cooling .zone-temp {
+  position: relative;
+  z-index: 10;
+}
+.btn-zone-cooling svg {
+  height: 24px;
+  display: block;
+  position: absolute;
+  top: calc(50% - 12px);
+  left: calc(50% - 12px);
+}
+.btn-zone-cooling .zone-switch {
+  position: absolute;
+  cursor: pointer;
+  width: 55px;
+  height: 55px;
+  top: 0;
+  right: 0;
+  z-index: 100;
+}
+.btn-zone-cooling .zone-switch .power-icon {
+  fill: #B3ECFF;
+}
+.btn-zone-cooling .zone-info {
+  position: absolute;
+  width: 90%;
+  bottom: 17px;
+  z-index: 10;
+}
+.btn-zone-cooling .zone-desc {
+  display: block;
+  font-size: 16px;
+  color: #FFF;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.btn-zone-cooling .zone-state {
+  display: block;
+  font-size: 13px;
+  color: #B3ECFF;
+}
+
+.btn-zone-success {
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  padding: 17px 13px;
+  height: 130px;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.22), 0 5px 10px 0 rgba(0, 0, 0, 0.34);
+  font-size: 33px;
+  color: #FFF;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s, background 0.2s;
+  background: radial-gradient(circle farthest-corner at 0% 100%, #2DCC9A 0%, #01644F 100%);
+  background: -webkit-radial-gradient(circle farthest-corner at 0% 100%, #2DCC9A 0%, #01644F 100%);
+  background: -moz-radial-gradient(circle farthest-corner at 0% 100%, #2DCC9A 0%, #01644F 100%);
+  background: -o-radial-gradient(circle farthest-corner at 0% 100%, #2DCC9A 0%, #01644F 100%);
+  background: -ms-radial-gradient(circle farthest-corner at 0% 100%, #2DCC9A 0%, #01644F 100%);
+  /* El botón debe cambiar la sombra si no está apagado */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.22), 0 1px 2px 0 rgba(0, 0, 0, 0.34);
+}
+.btn-zone-success .bg-icon {
+  position: absolute;
+  z-index: 0;
+  bottom: -20px;
+  right: -40px;
+  width: 100px;
+  fill: #7B8794 !important;
+}
+.btn-zone-success .zone-temp {
+  position: relative;
+  z-index: 10;
+}
+.btn-zone-success svg {
+  height: 24px;
+  display: block;
+  position: absolute;
+  top: calc(50% - 12px);
+  left: calc(50% - 12px);
+}
+.btn-zone-success .zone-switch {
+  position: absolute;
+  cursor: pointer;
+  width: 55px;
+  height: 55px;
+  top: 0;
+  right: 0;
+  z-index: 100;
+}
+.btn-zone-success .zone-switch .power-icon {
+  fill: #C6F7E5;
+}
+.btn-zone-success .zone-info {
+  position: absolute;
+  width: 90%;
+  bottom: 17px;
+  z-index: 10;
+}
+.btn-zone-success .zone-desc {
+  display: block;
+  font-size: 16px;
+  color: #FFF;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.btn-zone-success .zone-state {
+  display: block;
+  font-size: 13px;
+  color: #C6F7E5;
+}
+
+/* ROTACIÓN DE LA IMAGEN */
+@keyframes giroinfinito {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.bg-icon {
+  /*fill: red;*/
+  animation: giroinfinito 22s linear infinite;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+@media only screen and (min-width: 640px) {
+  .container {
+    padding: 0 30px 30px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .container {
+    padding: 0 30px 30px;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1024px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.titulo-place {
+  color: #666;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/*# sourceMappingURL=App.css.map */

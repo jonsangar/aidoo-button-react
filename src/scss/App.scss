@@ -1,0 +1,25 @@
+@import 'variables';
+@import 'botones';
+@import 'grid';
+
+* {
+    margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.titulo-place{
+    color: #666;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom:10px;
+}
