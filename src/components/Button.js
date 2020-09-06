@@ -62,7 +62,8 @@ class Button extends Component{
                     { this.devolverIconoFondo() }
        
                 </div>
-                
+
+                {/* Cada componente llevará asociado su ventana modal para actualizar el estado de temperatura consigna */}
                 <Modal 
                 uid={this.props.nombreZona} 
                 bajarTemp={this.bajarTemperatura.bind(this)}
@@ -187,6 +188,7 @@ class Button extends Component{
      */
     ajustarTempConsigna(event){
         
+        //El modal tiene el identificador asociado al nombre de zona
         let modal = document.getElementById(this.props.nombreZona);
 
         modal.style.display = 'block';
