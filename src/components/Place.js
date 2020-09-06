@@ -1,13 +1,16 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Button from './Button';
 
+/**
+ * Componente que indica un lugar que puede albergar varias zonas (Ej: Hogar, Oficina, Hotel, Hospital, etc)
+ * 
+ * TODO: implementar una forma de obtener el estado inicial de las zonas desde un servidor, websocket o similar
+ */
 class Place extends Component{
-
 
     render() {
         return(
             <React.Fragment>
-
                 <h3 className="titulo-place">{this.props.title}</h3>
                 <hr />
                 <div className="container">

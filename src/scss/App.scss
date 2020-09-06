@@ -1,6 +1,9 @@
 @import 'variables';
-@import 'botones';
 @import 'grid';
+@import 'botones';
+@import 'modal';
+@import 'formularios';
+
 
 * {
     margin: 0;
@@ -18,8 +21,16 @@ a{
 }
 
 .titulo-place{
+    margin: 0 10px;
     color: #666;
+    display: block;
     text-transform: uppercase;
     text-align: center;
     margin-bottom:10px;
+    max-width: 1024px;
+    padding: 17px 13px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.22),
+                0 5px 10px 0 rgba(0, 0, 0, 0.34);
+    font-size: 12px;
 }

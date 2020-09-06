@@ -12,6 +12,10 @@
         grid-template-columns: repeat(3, 1fr) ;
 
     }
+
+    .titulo-place{
+        margin: 0px 30px;
+    }
 }
 
 @media only screen and (min-width: 1024px){
@@ -21,5 +25,9 @@
         max-width: 1024px;
         border-left: 1px solid #ccc;
         border-right: 1px solid #ccc;
+    }
+
+    .titulo-place{
+        margin: 10px auto !important;
     }
 }

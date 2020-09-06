@@ -29,8 +29,18 @@
         z-index: 0;
         bottom: -20px;
         right: -40px;
-        width: 100px;
-        fill: #7B8794 !important;
+        width: 100px !important;
+        fill: red !important;
+    }
+
+    .cool-icon{
+        fill: #FFF;
+        opacity: .06;
+    }
+    
+    .heat-icon{
+        fill: #FFF;
+        opacity: .08;
     }
 
     .zone-temp{
@@ -147,7 +157,7 @@
 
 
 .bg-icon{
-    /*fill: red;*/
+
     animation: giroinfinito 22s linear infinite;
     
 }

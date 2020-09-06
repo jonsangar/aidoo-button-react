@@ -1,37 +1,46 @@
 import React, { Component } from 'react';
+
+//Importamos Componentes
+import Modal from './Modal';
+
+//Importamos iconos
 import heat_icon from '../assets/images/heat.svg';
 import cool_icon from '../assets/images/cool.svg';
 
+/**
+ * Componente botón de zona reutilizable. 
+ * Se inicializa con un estado que recibe medienta los atributos (activo, tempAmbiente, tempConsigna, nombreZona) al ser llamado por el padre
+ * Actualiza los estados y estilos dinámicamente según los valores de temperatura consigna y ambiente, además de estar o no activo.
+ */
 class Button extends Component{
 
-    
+    /**
+     * Constructor del componente
+     * @param {active, tempAmbiente, tempConsigna, nombreZona} props Recibe los atributos definidos al usar el componente y los asigna al estado
+     */
     constructor(props){
         super(props);
         this.state = {
             active: props.activo,
             temp_ambient: props.tempAmbiente,
             temp_consign: props.tempConsigna,
-            name_zone: props.nombreZona,
-            state_zone: ''
+            name_zone: props.nombreZona
         };
-
-        /* this.handleChange = this.handleChange.bind(this); */
-
-        /* console.log(this.state); */
-
     }
     
     
 
     
-
+    /**
+     * Renderiza la vista del componente
+     */
     render() {
         return (
             <React.Fragment>
 
-                <div onClick={this.btnPulsado.bind(this)} className={this.devolverEstiloEstado()} >
+                <div onClick={this.ajustarTempConsigna.bind(this)} className={this.devolverEstiloEstado()} >
         
-                    <a className="zone-switch" onClick={this.encendidoApagadoButton.bind(this)}>
+                    <div className="zone-switch" onClick={this.encendidoApagadoButton.bind(this)}>
                         <svg width="22px" height="24px" viewBox="0 0 22 24" version="1.1" xmlns="http://www.w3.org/2000/svg" >
                             <title>power</title>
                             <g className="Guía-de-estilo" stroke="none" strokeWidth="1" fillRule="none" >
@@ -40,7 +49,7 @@ class Button extends Component{
                                 </g>
                             </g>
                         </svg>
-                    </a>
+                    </div>
 
                     <span className="zone-temp"> {this.state.temp_ambient}&deg; </span>
 
@@ -49,27 +58,30 @@ class Button extends Component{
                         <span className="zone-state">{this.devolverZoneState()}</span>
                     </div>
 
-                    {/* <img 
-                    src={( this.state.temp_ambient < this.state.temp_consign ) ? heat_icon : cool_icon } 
-                    className="bg-icon heat_icon" alt="" 
-                    /> */}
-                    {/* <img className="bg-icon" src="../assets/images/cool.svg" alt=""> */}
-
+            
                     { this.devolverIconoFondo() }
        
                 </div>
-                    {/* <button onClick={this.subirTemp.bind(this)}>Subir</button>
-                    <button onClick={this.bajarTemp.bind(this)}>Bajar</button> */}
+                
+                <Modal 
+                uid={this.props.nombreZona} 
+                bajarTemp={this.bajarTemperatura.bind(this)}
+                subirTemp={this.subirTemperatura.bind(this)}
+                consigna={this.state.temp_consign}
+                ambiente={this.state.temp_ambient}
+                 />
 
                 
             </React.Fragment>
         );
     }
 
-    btnPulsado(event){
-        console.log(this);
-    }
+ 
 
+    /**
+     * Método encargado de aplicar la clase adecuada al botón según su estado: activo, enfiando o calentando
+     * @return {string} El nombre de la clase que aplica estilo al botón
+     */
     devolverEstiloEstado(){
         let estadoActual = this.state.active;
         let tempAmbiente = this.state.temp_ambient;
@@ -92,6 +104,9 @@ class Button extends Component{
         }
     }
 
+    /**
+     * Renderiza el mensaje que informa del estado en el que se encuentra la zona. Se imprime debajo del nombre de la zona
+     */
     devolverZoneState(){
         let estadoActual = this.state.active;
         let tempAmbiente = this.state.temp_ambient;
@@ -99,22 +114,24 @@ class Button extends Component{
 
         if(estadoActual === true){
             if(tempAmbiente === tempConsigna){
-                return 'Zona de confort';
+                return (<span>Zona de comfort</span>);
             }            
             if(tempAmbiente < tempConsigna){             
-                return `Calentando a ${ tempConsigna}`;
+                return ( <span>Calentando a {tempConsigna}&deg;</span> );
             }
 
             if(tempAmbiente > tempConsigna){          
-                return `Enfriando a ${ tempConsigna}`;
+                return ( <span>Enfriando a {tempConsigna}&deg;</span>);
             }
         } else {
-            return 'OFF';
+            return ( <span>OFF</span> );
         }
     }
 
 
-
+    /**
+     * Método que renderiza el icono giratorio de fondo según el estado de la sala
+     */
     devolverIconoFondo(){
 
         if( this.state.active === false ){
@@ -122,11 +139,16 @@ class Button extends Component{
         } else {
             return (<img 
                 src={( this.state.temp_ambient < this.state.temp_consign ) ? heat_icon : cool_icon } 
-                className="bg-icon heat_icon" alt="" 
-                />);
+                className="bg-icon"
+                alt="Botón encendido/apagado"
+                 />);
         }
     }
 
+    /**
+     * Controla la acción al pulsar el botón de encendido o apagado del botón (esquina superior derecha)
+     * @param {*} event El evento que lanza el propio botón
+     */
     encendidoApagadoButton(event){
 
         let estadoActual = this.state.active;
@@ -137,22 +159,54 @@ class Button extends Component{
             this.setState({active: true})
         } 
 
-        event.stopPropagation();
+        if (event.stopPropagation){
+            event.stopPropagation();
+        }
+        else if(window.event){
+           window.event.cancelBubble=true;
+        }
 
 
     }
 
-    subirTemp(e){
-        this.setState({
-            temp_consign: (this.state.temp_consign + 1)
-        });
+    /**
+     * Función que maneja el evento al hacer click sobre un botón. 
+     * Muestra una ventana modal asociada al mismo que permite modificar la temp de consigna
+     * 
+     * @param {*} event El evento ha lanzado la función
+     */
+    ajustarTempConsigna(event){
+        
+        let modal = document.getElementById(this.props.nombreZona);
+
+        modal.style.display = 'block';
+        modal.nextSibling.style.display = 'block';
+
     }
 
-    bajarTemp(e){
+    /**
+     * Función que actualiza el estado de la temp de consigna reduciéndola en 1.
+     * 
+     * @param {*} e Evento que que ha lanzado la función
+     */
+    bajarTemperatura = (e) => {
+        
         this.setState({
             temp_consign: (this.state.temp_consign - 1)
         });
-    }
+    };
+
+    /**
+     * Función que actualiza el estado de la temp de consigna aumentándola en 1.
+     * @param {*} e Evento que que ha lanzado la función
+     */
+    subirTemperatura = (e) => {
+    
+        this.setState({
+            temp_consign: (this.state.temp_consign + 1)
+        });
+    };
+
 
     
 

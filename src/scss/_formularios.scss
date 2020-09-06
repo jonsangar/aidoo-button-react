@@ -1,0 +1,35 @@
+.input-group{
+    width: 100%;
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    .input-group-btn{
+        
+        button{
+            background: #0B69A3;
+            width: 33px;
+            height: 33px;
+            cursor: pointer;
+            border: none;
+    
+            .btn-icon{
+                color: white;
+                font-weight: bold;
+                background:transparent;
+                text-align: center;
+            }
+        }
+
+    }
+    
+    .control-info{
+        height: 33px;
+        width: 100%;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        color: #333;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 4px;
+    }
+}
