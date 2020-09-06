@@ -5,7 +5,7 @@ Este es un proyecto de prueba sobre una posible implementación de un componente
 Se han tratado de resolver las siguientes cuestiones:
 
 * Reutilización del componente con paso de parámetros (props).
-* Implementar encendido y apagado del botón a través del botón asignado a ello.
+* Implementar encendido y apagado del botón a través del icono asignado a ello.
 * Implementación reactiva del mismo, haciendo uso de los estados para modificar los estilos si se dan las condiciones.
 * Implementación de interacción con el botón mediante una sencilla interfaz modal para actualizar la temperatura de consigna.
 * Maquetación de todos los elementos siguiendo las especificaciones y haciendo uso de SCSS/CSS para mejor mantenimiento de estilos.
