@@ -57,8 +57,13 @@
   color: #7B8794;
   overflow: hidden;
   cursor: pointer;
-  transition: box-shadow 0.2s, background 0.2s;
-  background-color: #fff;
+  /* transition: box-shadow 0.2s; */
+  background: #fff;
+  /* Transiciones */
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 .btn-zone-off .bg-icon {
   position: absolute;
@@ -130,7 +135,7 @@
   color: #FFF;
   overflow: hidden;
   cursor: pointer;
-  transition: box-shadow 0.2s, background 0.2s;
+  /* transition: box-shadow 0.2s; */
   background: radial-gradient(circle farthest-corner at 0% 100%, #EF694E 0%, #CF1E11 100%);
   /* Para garantizar compatibilidad con navegadores, concatenamos la variable con cada premisa */
   background: -webkit-radial-gradient(circle farthest-corner at 0% 100%, #EF694E 0%, #CF1E11 100%);
@@ -139,6 +144,11 @@
   background: -ms-radial-gradient(circle farthest-corner at 0% 100%, #EF694E 0%, #CF1E11 100%);
   /* El botón debe cambiar la sombra si no está apagado */
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.22), 0 1px 2px 0 rgba(0, 0, 0, 0.34);
+  /* Transiciones */
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 .btn-zone-heating .bg-icon {
   position: absolute;
@@ -210,7 +220,7 @@
   color: #FFF;
   overflow: hidden;
   cursor: pointer;
-  transition: box-shadow 0.2s, background 0.2s;
+  /* transition: box-shadow 0.2s; */
   background: radial-gradient(circle farthest-corner at 0% 100%, #40C3F7 0%, #0B69A3 100%);
   background: -webkit-radial-gradient(circle farthest-corner at 0% 100%, #40C3F7 0%, #0B69A3 100%);
   background: -moz-radial-gradient(circle farthest-corner at 0% 100%, #40C3F7 0%, #0B69A3 100%);
@@ -218,6 +228,11 @@
   background: -ms-radial-gradient(circle farthest-corner at 0% 100%, #40C3F7 0%, #0B69A3 100%);
   /* El botón debe cambiar la sombra si no está apagado */
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.22), 0 1px 2px 0 rgba(0, 0, 0, 0.34);
+  /* Transiciones */
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 .btn-zone-cooling .bg-icon {
   position: absolute;
@@ -289,7 +304,7 @@
   color: #FFF;
   overflow: hidden;
   cursor: pointer;
-  transition: box-shadow 0.2s, background 0.2s;
+  /* transition: box-shadow 0.2s; */
   background: radial-gradient(circle farthest-corner at 0% 100%, #2DCC9A 0%, #01644F 100%);
   background: -webkit-radial-gradient(circle farthest-corner at 0% 100%, #2DCC9A 0%, #01644F 100%);
   background: -moz-radial-gradient(circle farthest-corner at 0% 100%, #2DCC9A 0%, #01644F 100%);
@@ -297,6 +312,11 @@
   background: -ms-radial-gradient(circle farthest-corner at 0% 100%, #2DCC9A 0%, #01644F 100%);
   /* El botón debe cambiar la sombra si no está apagado */
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.22), 0 1px 2px 0 rgba(0, 0, 0, 0.34);
+  /* Transiciones */
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 .btn-zone-success .bg-icon {
   position: absolute;

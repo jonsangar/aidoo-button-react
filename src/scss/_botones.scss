@@ -21,7 +21,7 @@
     color: $colorTemp;
     overflow: hidden;
     cursor: pointer;
-    transition: box-shadow 0.2s, background 0.2s;
+    /* transition: box-shadow 0.2s; */
     
 
     .bg-icon{
@@ -103,7 +103,13 @@
 
 .btn-zone-off{
     @include btn-zone(#7B8794, #1F2933 , #9AA5B1,#CBD2D9);
-    background-color: $backgroundOff;
+    background: $backgroundOff;
+
+    /* Transiciones */
+    -webkit-transition: all .2s ease-out;  
+    -moz-transition: all .2s ease-out;  
+    -o-transition: all .2s ease-out;  
+    transition: all .2s ease-out; 
 }
 
 .btn-zone-heating{
@@ -118,6 +124,12 @@
     /* El botón debe cambiar la sombra si no está apagado */
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.22),
                 0 1px 2px 0 rgba(0, 0, 0, 0.34);
+
+    /* Transiciones */
+    -webkit-transition: all .2s ease-out;  
+    -moz-transition: all .2s ease-out;  
+    -o-transition: all .2s ease-out;  
+    transition: all .2s ease-out; 
 }
 
 .btn-zone-cooling{
@@ -131,6 +143,12 @@
     /* El botón debe cambiar la sombra si no está apagado */
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.22),
                 0 1px 2px 0 rgba(0, 0, 0, 0.34);
+
+    /* Transiciones */
+    -webkit-transition: all .2s ease-out;  
+    -moz-transition: all .2s ease-out;  
+    -o-transition: all .2s ease-out;  
+    transition: all .2s ease-out; 
 }
 
 .btn-zone-success{
@@ -144,6 +162,12 @@
     /* El botón debe cambiar la sombra si no está apagado */
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.22),
                 0 1px 2px 0 rgba(0, 0, 0, 0.34);
+
+    /* Transiciones */
+    -webkit-transition: all .2s ease-out;  
+    -moz-transition: all .2s ease-out;  
+    -o-transition: all .2s ease-out;  
+    transition: all .2s ease-out; 
 }
 
 

@@ -83,9 +83,13 @@ class Button extends Component{
      * @return {string} El nombre de la clase que aplica estilo al botón
      */
     devolverEstiloEstado(){
-        let estadoActual = this.state.active;
-        let tempAmbiente = this.state.temp_ambient;
-        let tempConsigna = this.state.temp_consign;
+        let estadoActual = false;
+        let tempAmbiente = 0;
+        let tempConsigna = 0;
+
+        estadoActual = this.state.active;
+        tempAmbiente = this.state.temp_ambient;
+        tempConsigna = this.state.temp_consign;
 
         if(estadoActual === true){
             if(tempAmbiente === tempConsigna){
@@ -114,14 +118,14 @@ class Button extends Component{
 
         if(estadoActual === true){
             if(tempAmbiente === tempConsigna){
-                return (<span>Zona de comfort</span>);
+                return (<span>Success</span>);
             }            
             if(tempAmbiente < tempConsigna){             
-                return ( <span>Calentando a {tempConsigna}&deg;</span> );
+                return ( <span>Heating to {tempConsigna}&deg;</span> );
             }
 
             if(tempAmbiente > tempConsigna){          
-                return ( <span>Enfriando a {tempConsigna}&deg;</span>);
+                return ( <span>Cooling to {tempConsigna}&deg;</span>);
             }
         } else {
             return ( <span>OFF</span> );
@@ -137,6 +141,12 @@ class Button extends Component{
         if( this.state.active === false ){
             return;
         } else {
+
+            //Si se alcanza la temperatura ambiente no pinto el icono
+            if(this.state.temp_ambient === this.state.temp_consign){
+                return;
+            }
+
             return (<img 
                 src={( this.state.temp_ambient < this.state.temp_consign ) ? heat_icon : cool_icon } 
                 className="bg-icon"

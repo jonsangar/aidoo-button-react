@@ -14,10 +14,10 @@ class Place extends Component{
                 <h3 className="titulo-place">{this.props.title}</h3>
                 <hr />
                 <div className="container">
-                    <Button activo={true} tempConsigna={34} tempAmbiente={39} nombreZona='Cocina'/>
-                    <Button activo={false} tempConsigna={15} tempAmbiente={50} nombreZona='Salón comedor'/>
-                    <Button activo={false} tempConsigna={22} tempAmbiente={15} nombreZona='Baño'/>
-                    <Button activo={true} tempConsigna={19} tempAmbiente={19} nombreZona='Habitación dormitorio'/>
+                    <Button activo={true} tempConsigna={20} tempAmbiente={25} nombreZona='Cocina'/>
+                    <Button activo={true} tempConsigna={22} tempAmbiente={20} nombreZona='Salón comedor'/>
+                    <Button activo={false} tempConsigna={25} tempAmbiente={18} nombreZona='Baño'/>
+                    <Button activo={true} tempConsigna={22} tempAmbiente={22} nombreZona='Habitación dormitorio'/>
                 </div>
             </React.Fragment>
         );

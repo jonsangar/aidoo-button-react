@@ -1,68 +1,93 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Implentación de botón control de zona - AIDOO
 
-## Available Scripts
+Este es un proyecto de prueba sobre una posible implementación de un componente reutilizable para la aplicación AIDOO.
 
-In the project directory, you can run:
+Se han tratado de resolver las siguientes cuestiones:
+
+* Reutilización del componente con paso de parámetros (props).
+* Implementar encendido y apagado del botón a través del botón asignado a ello.
+* Implementación reactiva del mismo, haciendo uso de los estados para modificar los estilos si se dan las condiciones.
+* Implementación de interacción con el botón mediante una sencilla interfaz modal para actualizar la temperatura de consigna.
+* Maquetación de todos los elementos siguiendo las especificaciones y haciendo uso de SCSS/CSS para mejor mantenimiento de estilos.
+* Realización de algunas pruebas unitarias sobre el componente Botón.
+
+## Ver el proyecto funcionando
+
+Para ver el proyecto en funcionamiento, he subido una distribución de producción a mi sitio web. 
+
+Ver en: [http://jonsg.es/devs/aidoo](http://jonsg.es/devs/aidoo)
+
+## Descargar y levantar el proyecto
+
+Se ha empleado React para la realización del proyecto y el diseño del componente, para aprovechar las ventajas que ofrece en la gestión de estados y props a la hora de diseñar aplicaciones reactivas.
+
+Si no se tiene instalado Node sería conveniente instalarlo primero. Ver: [https://nodejs.org/es/download/](https://nodejs.org/es/download/)
+
+## Release de producción
+
+Hay etiquetas disponibles para descargar el proyecto entero. Recomiendo descargar el Release más reciente.
+
+Una vez descargado, no olvidar instalar las dependencias de node_modules:
+
+### `npm install`
+
+Para levantar el proyecto
 
 ### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Ejecuta la app en modo desarrollo.<br />
+Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para lanzar el modo test de forma interactiva.<br />
+
+[running tests](https://facebook.github.io/create-react-app/docs/running-tests) para más información.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para generar el proyecto en producción. Se crea el directorio `build`<br />
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+[deployment](https://facebook.github.io/create-react-app/docs/deployment) para más información.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Docs
 
-### `npm run eject`
+### Button Component ###
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Este elemento está diseñado de forma que puede ser reutilizado. Recibe los siguientes parámetros (props):
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* **activo** : boolean - Indica si el componente (botón) está encendido o apagado.
+* **tempConsigna** : number - Temperatura a la que queremos climatizar la sala/zona
+* **tempAmbiente** : number - Temperatura actual a la que se encuentra la sala/zona
+* **nombreZona** : string - Nombre que identificará la sala/zona.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Ejemplo de uso con el paso de valores como literales:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`<Button activo={true} tempConsigna={20} tempAmbiente={25} nombreZona='Dormitorio' />`
 
-## Learn More
+En este proyecto de pruebas, se han creado varios componentes definidos a través de valores literales. Lo ideal sería recibir estos valores de un objeto externo (por ejemplo un JSON que obtengamos de un servidor externo a través de websocket o petición HTTP).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Estilos del botón
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Los estilos del botón están definidos en los archivos SCSS:
 
-### Code Splitting
+* _botones.scss
+* _variables.scss
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+De esta forma, se pueden importar fácilmente en un archivo SCSS para incluirlos con el resto de estilos del proyecto.
 
-### Analyzing the Bundle Size
+### Interacción con los botones
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Se ha implementado un componente 'Modal' para lanzar una sencilla interfaz con la que interactuar con cada uno de los botones creados.
 
-### Making a Progressive Web App
+De esta forma, podremos subir o bajar la temperatura de consigna. Como este valor está almacenado en los 'estados' del componente, se actualizará de forma dinámica en mismo y podremos ver como cambian los estilos si se alcanza o rebasa el umbral de la temperatura ambiente.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Otra forma de interactuar con el botón será cambiando su estado de encendido/apagado, pulsando el icono para tal fin en la esquina superior derecha.
 
-### Advanced Configuration
+Para verlo todo en funcionamiento puede visitar: [http://jonsg.es/devs/aidoo](http://jonsg.es/devs/aidoo)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### Documentación de los métodos
 
-### Deployment
+En el código fuente se han incluído los correspondientes comentarios para documentarlo, indicando los parámetros de entrada (si los hay), la salida y una breve descripción de la función implementada.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
