@@ -14,7 +14,7 @@
     }
 
     .titulo-place{
-        margin: 0px 30px;
+        margin: 10px 30px !important;
     }
 }
 
@@ -22,12 +22,12 @@
     .container{
         padding: 0 30px 30px;
         grid-template-columns: repeat(4, 1fr) ;
-        max-width: 1024px;
+        /* max-width: 1024px; 
         border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
+        border-right: 1px solid #ccc; */
     }
 
     .titulo-place{
-        margin: 10px auto !important;
+        margin: 10px 30px !important;
     }
 }
