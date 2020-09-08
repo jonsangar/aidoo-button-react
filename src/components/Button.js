@@ -151,7 +151,7 @@ class Button extends Component{
             return (<img 
                 src={( this.state.temp_ambient < this.state.temp_consign ) ? heat_icon : cool_icon } 
                 className="bg-icon"
-                alt="Botón encendido/apagado"
+                alt="Botón icono giratorio fondo"
                  />);
         }
     }

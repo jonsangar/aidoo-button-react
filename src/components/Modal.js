@@ -17,7 +17,7 @@ class Modal extends Component {
     render(){
         return ( 
             <React.Fragment>
-                <div onClick={this.cerrarModal} id={this.props.uid} className="modal-wrapper">asdfa</div>
+                <div onClick={this.cerrarModal} id={this.props.uid} className="modal-wrapper"></div>
                 <div className="modal">
                     <h3> Ajustar temperatura de {this.props.uid}</h3>
                     <hr/>
